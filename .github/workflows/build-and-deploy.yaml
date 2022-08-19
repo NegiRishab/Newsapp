@@ -1,17 +1,18 @@
 ---
-name: Build and Deploy React App to CloudFront
+name: Build and Deploy React app
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 jobs:
   build-and-deploy:
     name: Build and Deploy
     runs-on: ubuntu-latest
-    env:
+    env: 
       BUCKET: myawsbucketforcheck
       DIST: build
       REGION: us-east-1
       DIST_ID: E3BFS2D1XG40UF
+
 
     steps:
     - name: Checkout
@@ -20,7 +21,7 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID}}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.REGION }}
 
@@ -29,9 +30,7 @@ jobs:
     #     node-version: '14'
 
     - name: Install Dependencies
-      run: |
-        node --version
-        npm ci --production
+      run: npm install
 
     - name: Build Static Website
       run: npm run build
