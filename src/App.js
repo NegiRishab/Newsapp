@@ -12,12 +12,12 @@ export default class App extends Component {
   pagesize=15;
   render() {
     return (
-        <BrowserRouter>
+        
       <div>
-       <Navbar/>
+      hello worild;sacna
        
       </div>
-       </BrowserRouter>
+      
     )
   }
 }
